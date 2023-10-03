@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router';
+import MenuItem from './components/MenuItem.vue'
 
 import ChevronUp from 'vue-material-design-icons/ChevronUp.vue'
 import ChevronDown from 'vue-material-design-icons/ChevronDown.vue'
@@ -11,7 +12,7 @@ let openMenu = ref(false)
 </script>
 
 <template>
-  <div>
+<div>
     <div class="
 w-[calc(100%-240px)]
 h-[60px]
@@ -57,8 +58,28 @@ justify-between
       </span>
 
     </div>
-    <div id="sideNav" class="h-[100%] p-6 w-[240px] fixed z-50 bg-black"></div>
-  </div>
+    <div id="sideNav" class="h-[100%] p-6 w-[240px] fixed z-50 bg-black">
+      <RouterLink to="/">
+        <img width= "125" src="/images/icons/spotify-logo.png">
+      </RouterLink>
+    </div>
+    <div class="my-8"></div>
+            <ul>
+                <RouterLink to="/">
+                    <MenuItem class="ml-[1px]" :iconSize="23" name="Home" iconString="home" pageUrl="/" />
+                </RouterLink>
+                <RouterLink to="/search">
+                    <MenuItem class="ml-[1px]" :iconSize="24" name="Search" iconString="search" pageUrl="/search" />
+                </RouterLink>
+                <RouterLink to="/library">
+                    <MenuItem class="ml-[2px]" :iconSize="23" name="Your Library" iconString="library" pageUrl="/library" />
+                </RouterLink>
+                <div class="py-3.5"></div>
+                <MenuItem :iconSize="24" name="Create Playlist" iconString="playlist" pageUrl="/playlist" />
+                <MenuItem class="-ml-[1px]" :iconSize="27" name="Liked Songs" iconString="liked" pageUrl="/liked" />
+            </ul>
+            <div class="border-b border-b-gray-700"></div>
+          </div>
 </template>
 
 
